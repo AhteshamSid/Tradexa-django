@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% block content %}
+  <article class="media content-section">
+    <div class="media-body">
+      <div class="page-metadata">
+        <h2 class="article-content">2021 internship</h2>
+      </div>
+    </div>
+  </article>
+
+<br>
+  <article class="media content-section">
+    <div class="media-body">
+      <div class="page-metadata">
+        <h2 class="article-content">Post</h2>
+      </div>
+    </div>
+  </article>
+
+  {% for post in posts %}
+  <article class="media content-section">
+<!--    <img src="{{ post.author.profile.image.url }}" class="rounded-circle article-img">-->
+    <div class="media-body">
+      <h4 >{% if post.user %}{{ post.user.username }}{% else %} Anonymous User {% endif %}</h4>
+      <div class="article-metadata">
+        <p class="text-muted">{{ post.text}}</p>
+        <small class="text-muted">Created_at-{{ post.created_at}}; Updated_at-{{ post.updated_at}}</small>
+      </div>
+    </div>
+  </article>
+  {% endfor %}
+<br>
+<br>
+
+
+  <article class="media content-section">
+    <div class="media-body">
+      <div class="page-metadata">
+        <h2 class="article-content">Products</h2>
+      </div>
+    </div>
+  </article>
+{% for post in products %}
+  <article class="media content-section">
+<!--    <img src="{{ post.author.profile.image.url }}" class="rounded-circle article-img">-->
+    <div class="media-body">
+      <h4 >{{ forloop.counter }}.{{ post.name }}</h4>
+      <div class="article-metadata">
+        <p class="text-muted">Price= ${{ post.price}}  weight= {{ post.weight}}kg</p>
+        <small class="text-muted">created on {{ post.created_at}} updated on{{ post.updated_at}}</small>
+      </div>
+    </div>
+  </article>
+  {% endfor %}
+
+{% endblock content %}
